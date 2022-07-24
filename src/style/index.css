@@ -1,0 +1,309 @@
+/*resetStyle*/
+html,
+body,
+div,
+span,
+p,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+table,
+thead,
+tbody,
+tfoot,
+tr,
+th,
+td,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+img,
+a,
+strong,
+form,
+fieldset,
+input,
+textarea,
+select,
+table,
+option,
+blockquote,
+pre {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.clearflex {
+  *zoom: 1;
+}
+
+.clearflex:after {
+  content: '';
+  display: block;
+  height: 0;
+  visibility: hidden;
+  clear: both;
+}
+
+.fl-left {
+  float: left;
+}
+
+.fl-right {
+  float: right;
+}
+
+.textR {
+  text-align: right;
+}
+
+.textL {
+  text-align: left;
+}
+
+.textC {
+  text-align: center;
+}
+
+.searchTop {
+  width: 100%;
+  border-bottom: 10px solid #e9eef3;
+}
+
+/*定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸*/
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+  background-color: #ebebeb;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+
+/*定义滚动条轨道 内阴影+圆角*/
+::-webkit-scrollbar-track {
+  border-radius: 10px;
+  background-color: #ebebeb;
+}
+
+/*定义滑块 内阴影+圆角*/
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: #24232352;
+}
+/* 
+.informForm .el-select,
+.informForm .el-date-editor,
+.informForm .el-cascader {
+  width: 100%;
+} */
+.buttonList .el-select {
+  width: 20%;
+}
+
+.success {
+  color: #008000;
+}
+
+
+.executing{
+  border-radius: 50px;
+  background-color: #ffcc00;
+  color: #fff;
+}
+.warning {
+  color: #ff0000;
+}
+
+.el-main {
+  padding: 0px;
+}
+
+.searchForm {
+  margin-top: 20px;
+  text-align: left;
+}
+
+.el-dialog__header {
+  text-align: left;
+  border-bottom: 1px solid;
+  padding: 20px 20px 10px;
+}
+.el-dialog__body {
+  padding: 20px;
+}
+
+.el-dialog__body .name {
+  line-height: 80px;
+  text-align: left;
+  font-size: 16px;
+}
+
+.el-date-editor.el-input, .el-date-editor.el-input__inner {
+  width: 100% !important;
+}
+.el-select {
+  width: 100%;
+}
+
+.el-table td.el-table__cell, .el-table th.el-table__cell.is-leaf {
+  text-align: center;
+}
+
+.el-tabs--card>.el-tabs__header .el-tabs__item.is-active {
+  background-color: #409eff;
+  color: #ffffff;
+}
+
+.el-tabs__item:hover {
+  background-color: #409eff;
+  color: #ffffff;
+}
+
+
+/* 表格底部分页样式 */
+.com-pagination{
+  padding-top: 20px;
+  padding-bottom: 5px;
+  text-align: right;
+}
+/* .el-form-item {
+  margin-bottom: 10px;
+} */
+
+.el-form-item__label {
+  color: #000000;
+  line-height: 30px;
+}
+
+.el-form-item__content {
+  text-align: left;
+  line-height: 30px;
+}
+.el-input__inner {
+  height: 30px;
+}
+.el-input-number {
+  width: 220px;
+  height: 30px;
+  line-height: 30px;
+}
+.el-textarea__inner {
+  height: 30px;
+}
+.el-input-number.is-controls-right .el-input-number__decrease, .el-input-number.is-controls-right .el-input-number__increase {
+  line-height: 14px;
+}
+.el-input__icon {
+  line-height: 30px;
+}
+.el-date-editor .el-range__icon {
+  line-height: 22px;
+}
+.el-date-editor .el-range-separator {
+  line-height: 22px;
+}
+.el-cascader {
+  line-height: 30px;
+}
+
+.el-table .el-table__cell {
+  padding: 6px 0;
+}
+
+
+/* 按钮 */
+
+.auditBtn {
+  background-color: #78cd1f;
+  color: #ffffff;
+}
+.auditBtn:hover {
+  background-color: #78cd1f;
+  border-color: #78cd1f;
+  color: #ffffff;
+}
+.investigatedBtn {
+  background-color: #f2cb0b;
+  color: #ffffff;
+}
+.investigatedBtn:hover {
+  background-color: #f2cb0b;
+  border-color: #f2cb0b;
+  color: #ffffff;
+}
+
+/** 表单样式 **/
+.formBox {
+  padding: 20px;
+  border: 1px solid;
+  height: calc(100vh - 210px);
+  overflow-y: auto;
+}
+.formBox .el-input__inner {
+  width: 220px;
+}
+.buttonList {
+  line-height: 70px;
+}
+
+
+/* 菜单 */
+.el-menu {
+  background-color: #daedfe;
+}
+.el-menu-vertical-demo {
+  background-color: #daedfe;
+  text-align: left;
+}
+.el-menu--collapse {
+  width: 79px;
+  text-align: center;
+}
+.el-submenu .el-menu-item {
+  background-color: #ebebeb;
+}
+.el-submenu .el-menu-item.is-active {
+  background-color: #409eff;
+  color: #ffffff;
+}
+.el-submenu .el-menu-item:hover {
+  background-color: #409eff;
+  color: #ffffff;
+}
+/*隐藏文字*/
+.el-menu--collapse  .el-submenu__title span{
+  display: none;
+}
+/*隐藏 > */
+.el-menu--collapse  .el-submenu__title .el-submenu__icon-arrow{
+  display: none;
+}
+
+
+/** 表格样式 **/
+.el-table__fixed,el-table__fixed-right {
+  border-bottom:1px solid black;
+}
+.el-table td, .el-table th.is-leaf,.el-table--border, .el-table--group{
+  border-color: black;
+}
+.el-table--border::after, .el-table--group::after, .el-table::before{
+  background-color: black;
+}
+
+
+/* 移动端时的搜索按钮样式 */ 
+@media screen and (max-width:1200px) {
+  .searchForm .el-button+.el-button {
+    margin-left: 0;
+    margin: 5px 0;
+  }
+}

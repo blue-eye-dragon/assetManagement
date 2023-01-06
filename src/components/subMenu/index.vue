@@ -25,7 +25,6 @@
         
       }
     },
-    mounted () {},
     methods: {
         
       selectAsideList (item) {
@@ -44,4 +43,12 @@
 </script>
 
 <style lang="less" scoped>
+.el-menu-item.is-active {
+  background: linear-gradient(45deg, #0176db, #00a3f4);
+  color: #ffffff;
+}
+.el-menu-item:hover {
+  background: linear-gradient(45deg, #0176db, #00a3f4);
+  color: #ffffff;
+}
 </style>

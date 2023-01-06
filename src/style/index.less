@@ -39,9 +39,11 @@ pre {
   padding: 0;
   box-sizing: border-box;
 }
+
 .clearflex {
   *zoom: 1;
 }
+
 .clearflex:after {
   content: '';
   display: block;
@@ -49,25 +51,32 @@ pre {
   visibility: hidden;
   clear: both;
 }
+
 .fl-left {
   float: left;
 }
+
 .fl-right {
   float: right;
 }
+
 .textR {
   text-align: right;
 }
+
 .textL {
   text-align: left;
 }
+
 .textC {
   text-align: center;
 }
+
 .searchTop {
   width: 100%;
   border-bottom: 10px solid #e9eef3;
 }
+
 /*定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸*/
 ::-webkit-scrollbar {
   width: 10px;
@@ -77,11 +86,13 @@ pre {
   right: 0;
   bottom: 0;
 }
+
 /*定义滚动条轨道 内阴影+圆角*/
 ::-webkit-scrollbar-track {
   border-radius: 10px;
   background-color: #ebebeb;
 }
+
 /*定义滑块 内阴影+圆角*/
 ::-webkit-scrollbar-thumb {
   border-radius: 10px;
@@ -96,10 +107,13 @@ pre {
 .buttonList .el-select {
   width: 20%;
 }
+
 .success {
   color: #008000;
 }
-.executing {
+
+
+.executing{
   border-radius: 50px;
   background-color: #ffcc00;
   color: #fff;
@@ -107,13 +121,16 @@ pre {
 .warning {
   color: #ff0000;
 }
+
 .el-main {
   padding: 0px;
 }
+
 .searchForm {
   margin-top: 20px;
   text-align: left;
 }
+
 .el-dialog__header {
   text-align: left;
   border-bottom: 1px solid;
@@ -122,32 +139,37 @@ pre {
 .el-dialog__body {
   padding: 20px;
 }
+
 .el-dialog__body .name {
   line-height: 80px;
   text-align: left;
   font-size: 16px;
 }
-.el-date-editor.el-input,
-.el-date-editor.el-input__inner {
+
+.el-date-editor.el-input, .el-date-editor.el-input__inner {
   width: 100% !important;
 }
 .el-select {
   width: 100%;
 }
-.el-table td.el-table__cell,
-.el-table th.el-table__cell.is-leaf {
+
+.el-table td.el-table__cell, .el-table th.el-table__cell.is-leaf {
   text-align: center;
 }
-.el-tabs--card > .el-tabs__header .el-tabs__item.is-active {
+
+.el-tabs--card>.el-tabs__header .el-tabs__item.is-active {
   background-color: #409eff;
   color: #ffffff;
 }
+
 .el-tabs__item:hover {
   background-color: #409eff;
   color: #ffffff;
 }
+
+
 /* 表格底部分页样式 */
-.com-pagination {
+.com-pagination{
   padding-top: 20px;
   padding-bottom: 5px;
   text-align: right;
@@ -155,10 +177,12 @@ pre {
 /* .el-form-item {
   margin-bottom: 10px;
 } */
+
 .el-form-item__label {
   color: #000000;
   line-height: 30px;
 }
+
 .el-form-item__content {
   text-align: left;
   line-height: 30px;
@@ -174,8 +198,7 @@ pre {
 .el-textarea__inner {
   height: 30px;
 }
-.el-input-number.is-controls-right .el-input-number__decrease,
-.el-input-number.is-controls-right .el-input-number__increase {
+.el-input-number.is-controls-right .el-input-number__decrease, .el-input-number.is-controls-right .el-input-number__increase {
   line-height: 14px;
 }
 .el-input__icon {
@@ -190,10 +213,14 @@ pre {
 .el-cascader {
   line-height: 30px;
 }
+
 .el-table .el-table__cell {
   padding: 6px 0;
 }
+
+
 /* 按钮 */
+
 .auditBtn {
   background-color: #78cd1f;
   color: #ffffff;
@@ -212,6 +239,7 @@ pre {
   border-color: #f2cb0b;
   color: #ffffff;
 }
+
 /** 表单样式 **/
 .formBox {
   padding: 20px;
@@ -225,6 +253,8 @@ pre {
 .buttonList {
   line-height: 70px;
 }
+
+
 /* 菜单 */
 .el-menu {
   background-color: #daedfe;
@@ -249,48 +279,49 @@ pre {
   color: #ffffff;
 }
 /*隐藏文字*/
-.el-menu--collapse .el-submenu__title span {
+.el-menu--collapse  .el-submenu__title span{
   display: none;
 }
 /*隐藏 > */
-.el-menu--collapse .el-submenu__title .el-submenu__icon-arrow {
+.el-menu--collapse  .el-submenu__title .el-submenu__icon-arrow{
   display: none;
 }
+
+
 /** 表格样式 **/
-.el-table__fixed,
-el-table__fixed-right {
-  border-bottom: 1px solid transparent;
+.el-table__fixed,el-table__fixed-right {
+  border-bottom:1px solid transparent;
 }
-.el-table td,
-.el-table th.is-leaf,
-.el-table--border,
-.el-table--group {
+.el-table td, .el-table th.is-leaf,.el-table--border, .el-table--group{
   border-color: transparent;
 }
-.el-table--border::after,
-.el-table--group::after,
-.el-table::before {
+.el-table--border::after, .el-table--group::after, .el-table::before{
   background-color: transparent;
 }
-/* 移动端时的搜索按钮样式 */
-@media screen and (max-width: 1200px) {
-  .searchForm .el-button + .el-button {
+
+
+/* 移动端时的搜索按钮样式 */ 
+@media screen and (max-width:1200px) {
+  .searchForm .el-button+.el-button {
     margin-left: 0;
     margin: 5px 0;
   }
 }
+
 /* 全局搜索栏样式 */
 .searchForm {
   margin-bottom: 20px;
   border-bottom: 1px solid;
+  .el-input {
+    width: 200px;
+  }
 }
-.searchForm .el-input {
-  width: 200px;
-}
-/* 移动端分页自适应 */
+
+/* 移动端分页自适应 */ 
+
 .el-dialog {
   overflow-x: auto;
-}
-.el-dialog .el-pagination {
-  overflow-x: auto;
+  .el-pagination {
+      overflow-x: auto;
+  }
 }

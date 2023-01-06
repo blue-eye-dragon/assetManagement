@@ -1,7 +1,7 @@
 <template>
   <div id="userLayout">
     <div class="loginform">
-      <h2 class="topTitle">慢病平台</h2>
+      <h2 class="topTitle">医疗资产管理平台</h2>
       <el-form
         ref="loginForm"
         label-position="left"

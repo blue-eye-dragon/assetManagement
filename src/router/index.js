@@ -26,100 +26,85 @@ const router = new Router({
         title: '底层layout'
       },
       children: [
-        // 慢病上报子模块
         // 工作台
         {
           "path": "/workTable",
           "name": "workTable",
           "component": () => import("@/view/workTable/index.vue"),
         },
-        // 疾病报告管理
+        // 耗材收入分析
         {
-          "path": "/patientList",
-          "name": "patientList",
-          "component": () => import("@/view/patientList/index.vue"),
+          "path": "/incomeAnalysis",
+          "name": "incomeAnalysis",
+          "component": () => import("@/view/paymentsAnalysis/incomeAnalysis/index.vue"),
         },
+        // 耗材成本分析
+        {
+          "path": "/costAnalysis",
+          "name": "costAnalysis",
+          "component": () => import("@/view/paymentsAnalysis/costAnalysis/index.vue"),
+        },
+        // 耗材库存分析
+        {
+          "path": "/warehouseAnalysis",
+          "name": "warehouseAnalysis",
+          "component": () => import("@/view/warehouseAnalysis/index.vue"),
+        },
+        // 耗材入库分析
+        {
+          "path": "/inventoryAnalysis",
+          "name": "inventoryAnalysis",
+          "component": () => import("@/view/inventoryAnalysis/index.vue"),
+        },
+
+        // 耗材出库分析
+        {
+          "path": "/outboundAnalysis",
+          "name": "outboundAnalysis",
+          "component": () => import("@/view/outboundAnalysis/index.vue"),
+        },
+
+        // 高值耗材分析
+        {
+          "path": "/highConsumablesAnalysis",
+          "name": "highConsumablesAnalysis",
+          "component": () => import("@/view/highConsumablesAnalysis/index.vue"),
+        },
+
+        // 重点品规分析
+        {
+          "path": "/productGaugeAnalysis",
+          "name": "productGaugeAnalysis",
+          "component": () => import("@/view/productGaugeAnalysis/index.vue"),
+        },
+
+        // 病种分析
+        {
+          "path": "/diseaseAnalysis",
+          "name": "diseaseAnalysis",
+          "component": () => import("@/view/diseaseAnalysis/index.vue"),
+        },
+
+        // 供应商评价分析
+        {
+          "path": "/supplierEvaluationAnalysis",
+          "name": "supplierEvaluationAnalysis",
+          "component": () => import("@/view/supplierEvaluationAnalysis/index.vue"),
+        },
+
         // 统计报表
         {
           "path": "/statisticalReports",
           "name": "statisticalReports",
           "component": () => import("@/view/statisticalReports/index.vue"),
         },
-        // 卡片详情
-        {
-          "path": "/cardInformation",
-          "name": "cardInformation",
-          "component": () => import("@/view/cardInformation/index.vue"),
-        },
 
-        //  随访管理子模块
-        // 随访管理
+        // 统计报表
         {
-          "path": "/visiteManage",
-          "name": "visiteManage",
-          "component": () => import("@/view/visiteManage/index.vue"),
+          "path": "/handheldConsumablesAnalysis",
+          "name": "handheldConsumablesAnalysis",
+          "component": () => import("@/view/handheldConsumablesAnalysis/index.vue"),
         },
-        // 患者详情
-        {
-          "path": "/patientsDetail",
-          "name": "patientsDetail",
-          "component": () => import("@/view/visiteManage/patientsDetail/index.vue"),
-        },
-        // 随访记录
-        {
-          "path": "/visiteDetail",
-          "name": "visiteDetail",
-          "component": () => import("@/view/visiteManage/visiteDetail/index.vue"),
-        },
-        // 随访详情
-        {
-          "path": "/visiteRecords",
-          "name": "visiteRecords",
-          "component": () => import("@/view/visiteManage/visiteRecords/index.vue"),
-        },
-
-        // 结核病子模块
-        // 结核病患者列表
-        {
-          "path": "/TBpatientList",
-          "name": "TBpatientList",
-          "component": () => import("@/view/TBpatientList/index.vue"),
-        },
-        // 结核病患者详情
-        {
-          "path": "/TBpatientDetail",
-          "name": "TBpatientDetail",
-          "component": () => import("@/view/TBpatientList/TBpatientDetail/index.vue"),
-        },
-
-        // 双向转诊
-        // 转诊列表
-        {
-          "path": "/referralList",
-          "name": "referralList",
-          "component": () => import("@/view/dualLateral/referralList/index.vue"),
-        },
-        // 下转申请
-        {
-          "path": "/turnApplication",
-          "name": "turnApplication",
-          "component": () => import("@/view/dualLateral/turnApplication/index.vue"),
-        },
-
-        // 数据大屏
-        // 下转申请
-        {
-          "path": "/bigscreen",
-          "name": "bigscreen",
-          "component": () => import("@/view/bigscreen/index.vue"),
-        },
-
-        // 社区信息维护
-        // {
-        //   "path": "/communityMaintain",
-        //   "name": "communityMaintain",
-        //   "component": () => import("@/view/backManagement/communityMaintain/index.vue"),
-        // }
       ]
     }
   ]

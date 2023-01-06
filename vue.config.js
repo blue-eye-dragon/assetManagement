@@ -1,6 +1,6 @@
 module.exports = {
   publicPath: '', // 对应 webpack 中的 output.publicPath
-  outputDir: 'manbing', // 对应 webpack 中的 output.path
+  outputDir: 'assetManage', // 对应 webpack 中的 output.path
   lintOnSave: false, //是否开启eslint保存检测 ,它的有效值为 true || false || 'error'
   // transpileDependencies: [ /* string or regex */ ],
   // 是否为生产环境构建生成 source map？

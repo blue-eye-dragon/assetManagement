@@ -9,7 +9,7 @@ import router from './router'
 import moment from 'moment'
 import less from 'less'
 import Bus from '@/util/bus'
-import '@/style/index.css'
+import '@/style/index.less'
 
 
 Vue.use(less)

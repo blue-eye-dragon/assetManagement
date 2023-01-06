@@ -1,14 +1,17 @@
 <template id="layout">
   <el-container class="layout">
     <el-header class="headerTop">
-      <div class="title">慢病管理系统</div>
+      <div class="title">医疗资产管理平台</div>
       <el-button
         type="primary"
         :icon="`el-icon-${isCollapse?'s-unfold':'s-fold'}`"
         class="isShow"
         @click="changeShadow"
       ></el-button>
-      <Topmenu></Topmenu>
+      <div style="" class="topMenuTwo">
+        <span :class="topMenuTwo == 0?'topMenuActive':''" @click="topMenuTwo = 0">院长驾驶舱</span>
+        <span :class="topMenuTwo == 1?'topMenuActive':''" @click="topMenuTwo = 1">耗材分析</span>
+      </div>
       <div class="setting">
         <el-dropdown @command="handleCommand">
           <i
@@ -21,7 +24,10 @@
         </el-dropdown>
       </div>
     </el-header>
-    <el-container class="contentBox">
+    <el-container v-if="topMenuTwo == 0">
+      <workTable></workTable>
+    </el-container>
+    <el-container class="contentBox" v-if="topMenuTwo == 1">
       <el-aside
         v-if="!media"
         :width="isCollapse?'80px':'200px'"
@@ -35,9 +41,9 @@
       </el-aside>
       <el-main>
         <tagView class="tagTop"></tagView>
-        <keep-alive>
+        <!-- <keep-alive> -->
           <router-view class="mainBox"></router-view>
-        </keep-alive>
+        <!-- </keep-alive> -->
       </el-main>
       <el-drawer
         v-if="media"
@@ -64,21 +70,24 @@
 <script>
 import Aside from '@/view/layout/components/aside/index.vue'
 import Topmenu from '@/view/layout/components/topmenu/index.vue'
+import workTable from '@/view/workTable/index.vue'
 import tagView from '@/view/layout/components/tagView/index.vue'
 export default {
   name: 'layout',
   components: {
     Aside,
     Topmenu,
+    workTable,
     tagView
   },
   data () {
     return {
       isCollapse: false,
       media: false,
-      drawer: false,
+      drawer: true,
       userName: '',
-      upUserName: 'xxx'
+      upUserName: 'xxx',
+      topMenuTwo: 0
     }
   },
   mounted () {
@@ -108,31 +117,6 @@ export default {
     }
   },
   methods: {
-    open2 () {
-      const _this = this;
-      this.$notify({
-        title: '审核提醒',
-        dangerouslyUseHTMLString: true,
-        message: `
-            <div>
-              <div>
-                <span>${this.upUserName}<span>提交了新的待审批工单
-              </div>
-            <div>
-          `,
-        position: 'bottom-right',
-        offset: 10,
-        duration: 0,
-        onClick () {
-          console.log(333123);
-          _this.pushSub()
-        }
-      });
-    },
-    pushSub () {
-      cd
-      this.$router.push('/patientList')
-    },
     changeShadow () {
       this.drawer = !this.drawer
       if (!this.media) {
@@ -140,7 +124,9 @@ export default {
         this.bus.$emit('collapse', this.isCollapse)
       }
     },
-    handleCommand () { },
+    handleCommand () {
+      this.$router.push('/login')
+    },
     handleClose () { }
   }
 }
@@ -151,6 +137,11 @@ export default {
   text-align: center;
   height: 60px;
   line-height: 60px;
+}
+.topMenuActive {
+  border: 2px solid #f8f8f8;
+  border-radius: 10px;
+  background-color: #4081c4;
 }
 
 .el-aside {
@@ -174,9 +165,8 @@ export default {
     justify-content: space-between;
     background: linear-gradient(45deg, #0176db, #00a3f4);
     .title {
-      padding: 0 20px;
       color: #ebebeb;
-      font-size: 27px;
+      font-size: 22px;
       font-weight: 550;
     }
     .layoutLogo {
@@ -187,6 +177,15 @@ export default {
       width: calc(100% - 350px);
       height: 60px;
       padding: 0 20px;
+    }
+    .topMenuTwo {
+      position: absolute;
+      left: 300px;
+      color: #fff;
+      span {
+        padding: 8px;
+        margin: 0 10px
+      }
     }
     .setting {
       padding: 0 20px;
@@ -241,9 +240,9 @@ export default {
     }
     .mainBox {
       overflow-x: auto;
-      min-height: calc(100vh - 95px);
+      width: 100%;
+      min-height: calc(100vh - 60px);
       padding: 10px;
-      margin-top: 35px;
       background-color: #fff;
       border: 10px solid #dad9d9;
     }
@@ -271,6 +270,17 @@ export default {
         z-index: 999;
         padding: 0;
       }
+      .topMenuTwo {
+        position: absolute;
+        left: 60px;
+        right:100px;
+        color: #fff;
+        span {
+          padding: 8px;
+          margin: 0 10px;
+          font-size: 14px;
+        }
+      }
     }
     .el-aside {
       color: #333;
@@ -279,4 +289,5 @@ export default {
     }
   }
 }
+
 </style>

@@ -1,78 +1,273 @@
 <template>
-  <div class="workTable memberlist">
-    <cardType :cardList="cardList"></cardType>
+  <div class="workTable">
     <div class="content1">
-      <div class="content1Box1">
-        <p class="title">数据展示</p>
-        <el-table
-          :data="tableData"
-          stripe
-          border
-          max-height="270"
-          style="width: 100%"
-          :cell-style="cellStyle"
-          :header-cell-style="{background:'#cbe4ff',color:'black',borderColor:'black'}"
-        >
-          <el-table-column
-            prop="department"
-            fixed
-            label="科室"
-          >
-          </el-table-column>
-          <el-table-column
-            prop="toReported"
-            label="待上报"
-            sortable
-            width="120"
-          >
-          </el-table-column>
-          <el-table-column
-            prop="exclude"
-            label="排除"
-            sortable
-            width="120"
-          >
-          </el-table-column>
-          <el-table-column
-            prop="pending"
-            label="待审批"
-            sortable
-            width="120"
-          >
-          </el-table-column>
-          <el-table-column
-            prop="approval"
-            label="已审批"
-            sortable
-            width="120"
-          >
-          </el-table-column>
-          <el-table-column
-            prop="Back"
-            label="退回"
-            sortable
-            width="120"
-          >
-          </el-table-column>
-          <el-table-column
-            prop="all"
-            label="全部"
-            sortable
-            width="120"
-          >
-          </el-table-column>
-        </el-table>
-        <p class="title">图形展示</p>
-        <div id="dataEcharts"></div>
-      </div>
-      <div class="content1Box2">
-        <div style="height:50%">
-          <p class="title">未上报占比</p>
-          <div id="ranking"></div>
+      <div class="leftBox">
+        <div class="paymentsAnalysis subjectBox">
+          <titleBox titleName="耗材收支分析">
+            <div class="selectCycle">
+              <div>日</div>
+              <div>月</div>
+              <div>年</div>
+            </div>
+          </titleBox>
+          <div id="paymentsAnalysis">
+            <div class="box">
+              <div class="title">
+                耗材收入
+              </div>
+              <div class="content">
+                <div class="subBox">
+                  <div>低值</div>
+                  <div style="fontSize:18px;color:#0556e1">500</div>
+                </div>
+                <div class="subBox">
+                  <div>高值</div>
+                  <div style="fontSize:18px;color:#0556e1">600</div>
+                </div>
+                <div class="subBox">
+                  <div>总收入</div>
+                  <div style="fontSize:18px;color:#0556e1">1100</div>
+                </div>
+              </div>
+            </div>
+            <div class="box">
+              <div class="title">
+                耗材支出
+              </div>
+              <div class="content">
+                <div class="subBox">
+                  <div>低值</div>
+                  <div style="fontSize:18px;color:#0556e1">500</div>
+                </div>
+                <div class="subBox">
+                  <div>高值</div>
+                  <div style="fontSize:18px;color:#0556e1">600</div>
+                </div>
+                <div class="subBox">
+                  <div>总收入</div>
+                  <div style="fontSize:18px;color:#0556e1">1100</div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-        <div style="height:50%">
-          <p class="title">科室排名</p>
-          <div id="proportion"></div>
+        <div class="warehouseAnalysis subjectBox">
+          <titleBox titleName="耗材库存结存分析">
+            <div class="selectCycle">
+              <div>日</div>
+              <div>月</div>
+              <div>年</div>
+            </div>
+          </titleBox>
+          <div id="warehouseAnalysis">
+            <el-table :data="tableData"
+                      :cell-style="cellStyle"
+                      height="150px"
+                      :header-cell-style="{background:'#011729',color:'#6aaaeb',borderColor:'#1b0046',fontSzie:'10px'}"
+                      style="width: 100%">
+              <el-table-column
+                type="index"
+                label="序号"
+                width="50">
+              </el-table-column>
+              <el-table-column prop="warehouse"
+                               label="仓库名称">
+              </el-table-column>
+              <el-table-column prop="inStorage"
+                               label="本期入库">
+              </el-table-column>
+              <el-table-column prop="outStorage"
+                               label="本期出库">
+              </el-table-column>
+              <el-table-column prop="remaine"
+                               label="库存结余">
+              </el-table-column>
+            </el-table>
+          </div>
+        </div>
+        <div class="inventoryAmount subjectBox">
+          <titleBox titleName="耗材库存结存分析">
+            <div class="selectCycle">
+              <div>月</div>
+              <div>年</div>
+            </div>
+          </titleBox>
+          <div id="inventoryAmount">
+            <div class="top">
+              <div class="leftBox"> 
+                <div>收费耗材库存</div>
+                <div>1000</div>
+              </div>
+              <div class="centerBox">
+                <div>总库存</div>
+                <div>3000</div>
+              </div>
+              <div class="rightBox">
+                <div>不收费耗材库存</div>
+                <div>2000</div>
+              </div>
+            </div>
+            <div class="bottom">
+              <div>最高库存耗材：<span>800</span></div>
+              <div>最低库存耗材：<span>100</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="centerBox">
+        <div class="materialStatistics subjectBox">
+          <titleBox titleName="耗材消耗统计">
+            <div class="selectCycle">
+              <div>日</div>
+              <div>月</div>
+              <div>年</div>
+            </div>
+          </titleBox>
+          <div id="materialStatistics">
+            <div class="box">
+              <div class="title">
+                收费材料
+              </div>
+              <div class="content">
+                <div class="subBox">
+                  <div>最大耗占比</div>
+                  <div style="fontSize:18px;color:#0556e1">500</div>
+                </div>
+                <div class="subBox">
+                  <div>最小耗占比</div>
+                  <div style="fontSize:18px;color:#0556e1">600</div>
+                </div>
+                <div class="subBox">
+                  <div>耗占比</div>
+                  <div style="fontSize:18px;color:#0556e1">1100</div>
+                </div>
+              </div>
+            </div>
+            <div class="box">
+              <div class="title">
+                不收费材料
+              </div>
+              <div class="content">
+                <div class="subBox">
+                  <div>最大耗占比</div>
+                  <div style="fontSize:18px;color:#0556e1">500</div>
+                </div>
+                <div class="subBox">
+                  <div>最小耗占比</div>
+                  <div style="fontSize:18px;color:#0556e1">600</div>
+                </div>
+                <div class="subBox">
+                  <div>耗占比</div>
+                  <div style="fontSize:18px;color:#0556e1">1100</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="consumableRecipients subjectBox">
+          <titleBox titleName="科室耗材领用TOP10">
+            <div class="selectCycle">
+              <div>月</div>
+              <div>年</div>
+            </div>
+          </titleBox>
+          <div id="consumableRecipients"></div>
+        </div>
+        <div class="contentTwoBox">
+          <div class="useRankings" style="border: 1px solid #6aaaeb;border-radius: 10px;padding: 10px;">
+            <titleBox titleName="科室使用排名TOP10">
+              <div class="selectCycle">
+                <div>月</div>
+                <div>年</div>
+              </div>
+            </titleBox>
+            <div id="useRankings">
+              <el-table :data="tableData"
+                        :cell-style="cellStyle1"
+                        height="120px"
+                        :header-cell-style="{background:'#001d42',color:'#6aaaeb',borderColor:'#1b0046',fontSzie:'10px'}"
+                        style="width: 100%">
+              <el-table-column
+                label="序号"
+                type="index"
+                width="50">
+              </el-table-column>
+                <el-table-column prop="warehouse"
+                                label="耗材名称">
+                </el-table-column>
+                <el-table-column prop="inStorage"
+                                label="规格">
+                </el-table-column>
+                <el-table-column prop="outStorage"
+                                label="型号">
+                </el-table-column>
+                <el-table-column prop="remaine"
+                                label="金额">
+                </el-table-column>
+              </el-table>
+            </div>
+
+          </div>
+          <div class="useNumRankings" style="border: 1px solid #6aaaeb;border-radius: 10px;padding: 10px;">
+            <titleBox titleName="耗材单品使用量排名">
+              <div class="selectCycle">
+                <div>月</div>
+                <div>日</div>
+                <div>年</div>
+              </div>
+            </titleBox>
+            <div id="useNumRankings"></div>
+          </div>
+        </div>
+      </div>
+      <div class="rightBox">
+        <div class="diseaseConsumption subjectBox">
+          <titleBox titleName="疾病耗材消耗金额与耗占比">
+            <div class="selectCycle">
+              <div>月</div>
+              <div>年</div>
+            </div>
+          </titleBox>
+          <div id="diseaseConsumption"></div>
+        </div>
+        <div class="consumptionRank subjectBox">
+          <titleBox titleName="科室耗占比TOP5">
+            <div class="selectCycle">
+              <div>月</div>
+              <div>年</div>
+            </div>
+          </titleBox>
+          <div id="consumptionRank"></div>
+        </div>
+        <div class="suppliersRank subjectBox">
+          <titleBox titleName="供应商供应排名TOP10">
+            <div class="selectCycle">
+              <div>月</div>
+              <div>年</div>
+            </div>
+          </titleBox>
+          <div id="suppliersRank">
+            <el-table :data="tableData"
+                      class="topBox"
+                      :cell-style="cellStyle"
+                      height="120px"
+                      :header-cell-style="{background:'#011729',color:'#6aaaeb',borderColor:'#1b0046',fontSzie:'10px'}"
+                      style="width: 100%">
+              <el-table-column
+                label="序号"
+                type="index"
+                width="50">
+              </el-table-column>
+              <el-table-column prop="warehouse"
+                               label="供应商名称">
+              </el-table-column>
+              <el-table-column prop="inStorage"
+                               label="金额"
+                               width="120">
+              </el-table-column>
+            </el-table>
+          </div>
+
         </div>
       </div>
     </div>
@@ -81,201 +276,58 @@
 
 <script>
 import mixin from '@/mixins'
-import cardType from '@/components/cardType/index'
-var myChart1
-var myChart2
-var myChart3
+import titleBox from '@/components/title/index'
+var myChart1, myChart2, myChart3, myChart4
 export default {
   name: 'workTable',
   mixins: [mixin],
   components: {
-    cardType
+    titleBox
   },
   data () {
     return {
-      isCollapse: false,
-      cardList: [
-        {
-          id: '2',
-          title1: '传染病监测',
-          title: '疾病报告管理',
-          path: '/patientList',
-          toAudit: '12',
-          audited: '15',
-          willExpire: '9'
-        },
-        {
-          id: '2',
-          title1: '慢病监测',
-          title: '疾病报告管理',
-          path: '/patientList',
-          toAudit: '21',
-          audited: '45',
-          willExpire: '12'
-        },
-        {
-          id: '2',
-          title1: '精神障碍监测',
-          title: '疾病报告管理',
-          path: '/patientList',
-          toAudit: '14',
-          audited: '31',
-          willExpire: '11'
-        },
-        {
-          id: '2',
-          title1: '死因监测',
-          title: '疾病报告管理',
-          path: '/patientList',
-          toAudit: '16',
-          audited: '42',
-          willExpire: '21'
-        },
-        {
-          id: '2',
-          title1: '食源性疾病监测',
-          title: '疾病报告管理',
-          path: '/patientList',
-          toAudit: '21',
-          audited: '24',
-          willExpire: '15'
-        },
-        {
-          id: '2',
-          title1: '其它监测',
-          title: '疾病报告管理',
-          path: '/patientList',
-          toAudit: '16',
-          audited: '25',
-          willExpire: '13'
-        },
-      ],
       tableData: [
         {
-          department: '神经内科',
-          toReported: '12',
-          exclude: '5',
-          pending: '13',
-          approval: '51',
-          Back: '14',
-          all: '233'
+          id: 1,
+          warehouse: '仓库1',
+          inStorage: 100,
+          outStorage: 300,
+          remaine: 400
         },
         {
-          department: '消化科',
-          toReported: '12',
-          exclude: '5',
-          pending: '13',
-          approval: '51',
-          Back: '14',
-          all: '233'
+          id: 1,
+          warehouse: '仓库1',
+          inStorage: 100,
+          outStorage: 300,
+          remaine: 400
         },
         {
-          department: '血液科',
-          toReported: '12',
-          exclude: '5',
-          pending: '13',
-          approval: '51',
-          Back: '14',
-          all: '233'
+          id: 1,
+          warehouse: '仓库1',
+          inStorage: 100,
+          outStorage: 300,
+          remaine: 400
         },
         {
-          department: '肾内科',
-          toReported: '12',
-          exclude: '5',
-          pending: '13',
-          approval: '51',
-          Back: '14',
-          all: '233'
+          id: 1,
+          warehouse: '仓库1',
+          inStorage: 100,
+          outStorage: 300,
+          remaine: 400
         },
         {
-          department: '内分泌科',
-          toReported: '12',
-          exclude: '5',
-          pending: '13',
-          approval: '51',
-          Back: '14',
-          all: '233'
+          id: 1,
+          warehouse: '仓库1',
+          inStorage: 100,
+          outStorage: 300,
+          remaine: 400
         },
         {
-          department: '神经外科',
-          toReported: '12',
-          exclude: '5',
-          pending: '13',
-          approval: '51',
-          Back: '14',
-          all: '233'
-        },
-        {
-          department: '肿瘤科',
-          toReported: '12',
-          exclude: '5',
-          pending: '13',
-          approval: '51',
-          Back: '14',
-          all: '233'
-        },
-        {
-          department: '普外科',
-          toReported: '12',
-          exclude: '5',
-          pending: '13',
-          approval: '51',
-          Back: '14',
-          all: '233'
-        },
-        {
-          department: '泌尿外科',
-          toReported: '12',
-          exclude: '5',
-          pending: '13',
-          approval: '51',
-          Back: '14',
-          all: '233'
-        },
-        {
-          department: '心胸外科',
-          toReported: '12',
-          exclude: '5',
-          pending: '13',
-          approval: '51',
-          Back: '14',
-          all: '233'
-        },
-        {
-          department: '肿瘤放疗科',
-          toReported: '12',
-          exclude: '5',
-          pending: '13',
-          approval: '51',
-          Back: '14',
-          all: '233'
-        },
-        {
-          department: '产科',
-          toReported: '12',
-          exclude: '5',
-          pending: '13',
-          approval: '51',
-          Back: '14',
-          all: '233'
-        },
-        {
-          department: '中医科',
-          toReported: '12',
-          exclude: '5',
-          pending: '13',
-          approval: '51',
-          Back: '14',
-          all: '233'
-        },
-        {
-          department: '口腔科',
-          toReported: '12',
-          exclude: '5',
-          pending: '13',
-          approval: '51',
-          Back: '14',
-          all: '233'
+          id: 1,
+          warehouse: '仓库1',
+          inStorage: 100,
+          outStorage: 300,
+          remaine: 400
         }
       ]
     }
@@ -285,243 +337,465 @@ export default {
   mounted () {
     this.bus.$on('collapse', item => {
       setTimeout(() => {
-        this.getDataEcharts()
-        this.getRanking()
-        this.getProportion()
+        this.initConsumptionRank()
+        this.initConsumableRecipients()
+        this.initUseNumRankings()
+        this.initDiseaseConsumption()
       })
     })
-    this.getDataEcharts()
-    this.getRanking()
-    this.getProportion()
+    this.initConsumptionRank()
+    this.initConsumableRecipients()
+    this.initUseNumRankings()
+    this.initDiseaseConsumption()
+    // this.getRanking()
+    // this.getProportion()
   },
   methods: {
-    getDataEcharts () {
+    initConsumptionRank () {
       if (myChart1 != null && myChart1 != "" && myChart1 != undefined) {
         myChart1.dispose(); //销毁
       }
-      var chartDom = document.getElementById('dataEcharts');
+      var chartDom = document.getElementById('consumptionRank');
       myChart1 = this.$echarts.init(chartDom);
       var option = {
-        // title: {
-        //   text: 'Stacked Line'
-        // },
         tooltip: {
-          trigger: 'axis'
+          trigger: 'axis',
+          axisPointer: {
+            type: 'shadow'
+          }
         },
         legend: {
-          data: ['神经内科', '消化科', '血液科', '肾内科', '内分泌科', '神经外科', '肿瘤科', '普外科', '泌尿外科', '心胸外科', '肿瘤放疗科', '产科', '中医科', '口腔科']
+          top: '5%',
+          left: 'center',
+          textStyle: {
+            color: "#6aaaeb"
+          }
         },
         grid: {
           left: '3%',
           right: '4%',
           bottom: '3%',
+          top: '25%',
           containLabel: true
         },
         xAxis: {
           type: 'category',
-          boundaryGap: false,
-          data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+          data: ['第一名','第二名','第三名','第四名','第五名'],
+          axisTick: {
+            alignWithLabel: true
+          },
+          // axisLabel: {
+          //   interval: 0,
+          //   rotate: -35
+          // },
+          //设置坐标轴字体颜色和宽度
+          axisLine: {
+            lineStyle: {
+              color: "#6aaaeb",
+            }
+          }
         },
         yAxis: {
-          type: 'value'
+          type: 'value',
+          //设置坐标轴字体颜色和宽度
+          axisLine: {
+            lineStyle: {
+              color: "#6aaaeb",
+            }
+          }
         },
         series: [
           {
-            name: '神经内科',
-            type: 'line',
-            stack: 'Total',
-            data: [120, 132, 101, 134, 90, 230, 210]
+            name: '科室收入',
+            type: 'bar',
+            data: [20000, 23489, 29034, 50000, 60000, 100000]
           },
           {
-            name: '消化科',
-            type: 'line',
-            stack: 'Total',
-            data: [220, 182, 191, 234, 290, 330, 310]
+            name: '科室支出',
+            type: 'bar',
+            data: [20000, 23489, 29034, 50000, 60000, 100000]
           },
           {
-            name: '血液科',
-            type: 'line',
-            stack: 'Total',
-            data: [150, 232, 201, 154, 190, 330, 410]
+            name: '科室耗占比',
+            type: 'bar',
+            data: [20000, 23489, 29034, 50000, 60000, 100000]
           },
-          {
-            name: '肾内科',
-            type: 'line',
-            stack: 'Total',
-            data: [320, 332, 301, 334, 390, 330, 320]
-          },
-          {
-            name: '内分泌科',
-            type: 'line',
-            stack: 'Total',
-            data: [820, 932, 901, 934, 1290, 1330, 1320]
-          },
-          {
-            name: '神经外科',
-            type: 'line',
-            stack: 'Total',
-            data: [720, 532, 231, 514, 1320, 1530, 1320]
-          },
-          {
-            name: '肿瘤科',
-            type: 'line',
-            stack: 'Total',
-            data: [824, 235, 614, 315, 615, 1553, 1734]
-          },
-          {
-            name: '普外科',
-            type: 'line',
-            stack: 'Total',
-            data: [515, 414, 134, 513, 1445, 1515, 1613]
-          },
-          {
-            name: '泌尿外科',
-            type: 'line',
-            stack: 'Total',
-            data: [1332, 414, 515, 134, 517, 345, 153]
-          },
-          {
-            name: '心胸外科',
-            type: 'line',
-            stack: 'Total',
-            data: [141, 245, 345, 515, 414, 1330, 1643]
-          },
-          {
-            name: '肿瘤放疗科',
-            type: 'line',
-            stack: 'Total',
-            data: [134, 151, 616, 1414, 1412, 1330, 1320]
-          },
-          {
-            name: '产科',
-            type: 'line',
-            stack: 'Total',
-            data: [820, 932, 901, 934, 1290, 1330, 1320]
-          },
-          {
-            name: '中医科',
-            type: 'line',
-            stack: 'Total',
-            data: [820, 932, 901, 934, 1290, 1330, 1320]
-          },
-          {
-            name: '口腔科',
-            type: 'line',
-            stack: 'Total',
-            data: [820, 932, 901, 934, 1290, 1330, 1320]
-          }
         ]
       };
       option && myChart1.setOption(option);
     },
-    getRanking () {
+    initConsumableRecipients () {
       if (myChart2 != null && myChart2 != "" && myChart2 != undefined) {
         myChart2.dispose(); //销毁
       }
-      var chartDom = document.getElementById('ranking');
+      var chartDom = document.getElementById('consumableRecipients');
       myChart2 = this.$echarts.init(chartDom);
       var option = {
         tooltip: {
-          trigger: 'item'
+          trigger: 'axis',
+          axisPointer: {
+            type: 'shadow'
+          }
         },
         legend: {
-          top: '0%',
-          left: 'center'
-        },
-        series: [
-          {
-            type: 'pie',
-            radius: '50%',
-            data: [
-              { value: 1048, name: '神经内科' },
-              { value: 735, name: '消化科' },
-              { value: 580, name: '血液科' },
-              { value: 484, name: '肾内科' },
-              { value: 300, name: '内分泌科' }
-            ],
-            emphasis: {
-              itemStyle: {
-                shadowBlur: 10,
-                shadowOffsetX: 0,
-                shadowColor: 'rgba(0, 0, 0, 0.5)'
-              }
-            }
+          top: '1%',
+          left: 'center',
+          textStyle: {
+            color: "#6aaaeb"
           }
-        ]
-      };
-
-      option && myChart2.setOption(option);
-
-    },
-    getProportion () {
-      if (myChart3 != null && myChart3 != "" && myChart3 != undefined) {
-        myChart3.dispose(); //销毁
-      }
-      var chartDom = document.getElementById('proportion');
-      myChart3 = this.$echarts.init(chartDom);
-      var option = {
+        },
+        grid: {
+          left: '3%',
+          right: '4%',
+          bottom: '3%',
+          top: '25%',
+          containLabel: true
+        },
         xAxis: {
-          // type: 'category',
-          data: ['内分泌科', '消化科', '血液科', '肾内科', '内分泌科', '神经外科', '肿瘤科', '普外科', '泌尿外科', '心胸外科', '肿瘤放疗科', '产科', '中医科'],
+          type: 'category',
+          data: ['第一名','第二名','第三名','第四名','第五名','第六名','第七名','第八名','第九名','第十名'],
+          axisTick: {
+            alignWithLabel: true
+          },
           axisLabel: {
             interval: 0,
-            rotate: '-45'
+            rotate: -35
+          },
+          //设置坐标轴字体颜色和宽度
+          axisLine: {
+            lineStyle: {
+              color: "#6aaaeb",
+            }
           }
         },
         yAxis: {
-          type: 'value'
+          type: 'value',
+          //设置坐标轴字体颜色和宽度
+          axisLine: {
+            lineStyle: {
+              color: "#6aaaeb",
+            }
+          }
         },
         series: [
           {
-            data: [120, 200, 150, 80, 70, 110, 130, 65, 74, 90, 140, 89, 24],
+            name: '低值耗材',
             type: 'bar',
-            barWidth: 10,
-            showBackground: true,
-            backgroundStyle: {
-              color: 'rgba(180, 180, 180, 0.2)'
-            }
+            data: [20000, 23489, 29034, 50000, 60000, 100000, 20000, 23489, 29034, 50000, 60000]
+          },
+          {
+            name: '高值耗材',
+            type: 'bar',
+            data: [20000, 23489, 29034, 50000, 60000, 20000, 23489, 29034, 50000, 60000, 100000]
+          },
+        ]
+      };
+      option && myChart2.setOption(option);
+    },
+    initUseNumRankings () {
+      if (myChart3 != null && myChart3 != "" && myChart3 != undefined) {
+        myChart3.dispose(); //销毁
+      }
+      var chartDom = document.getElementById('useNumRankings');
+      myChart3 = this.$echarts.init(chartDom);
+      var option = {
+        title: [
+          {
+            subtext: '不同价格区间占比',
+            left: '25%',
+            top: '1%',
+            textAlign: 'center',
+            subtextStyle: {
+              color: '#6aaaeb'
+            },
+          },
+          {
+            subtext: '收费/不收费占比',
+            left: '75%',
+            top: '3%',
+            textAlign: 'center',
+            subtextStyle: {
+              color: '#6aaaeb'
+            },
+          },
+        ],
+        tooltip: {
+          trigger: 'item',
+          formatter: '{a} <br/>{b} : {c} ({d}%)'
+        },
+        grid: {
+          left: '1%',
+          right: '1%',
+          top: '5%',
+          containLabel: true
+        },
+        series: [
+          {
+            name: '不同价格区间占比',
+            type: 'pie',
+            radius: '50%',
+            center: ['25%', '50%'],
+            label: {
+              show: false,
+            },
+            labelLine: {
+              show: false
+            },
+            data: [
+              { value: 1038, name: '0-1000' },
+              { value: 735, name: '1000-2000' },
+              { value: 580, name: '2000-5000' },
+              { value: 484, name: '5000-10000' },
+              { value: 300, name: '10000以上' }
+            ],
+          },
+          {
+            name: '收费/不收费占比',
+            type: 'pie',
+            radius: '50%',
+            center: ['75%', '50%'],
+            label: {
+              show: false,
+            },
+            labelLine: {
+              show: false
+            },
+            data: [
+              { value: 1038, name: '收费' },
+              { value: 735, name: '不收费' },
+            ],
           }
         ]
       };
       option && myChart3.setOption(option);
-    }
+    },
+    initDiseaseConsumption () {
+      if (myChart4 != null && myChart4 != "" && myChart4 != undefined) {
+        myChart4.dispose(); //销毁
+      }
+      var chartDom = document.getElementById('diseaseConsumption');
+      myChart4 = this.$echarts.init(chartDom);
+      var option = {
+        tooltip: {
+          trigger: 'axis',
+          axisPointer: {
+            type: 'shadow'
+          }
+        },
+        legend: {
+          top: '1%',
+          left: 'center',
+          textStyle: {
+            color: "#6aaaeb"
+          }
+        },
+        grid: {
+          left: '1%',
+          right: '1%',
+          bottom: '3%',
+          top: '25%',
+          containLabel: true
+        },
+        xAxis: {
+          type: 'value',
+        },
+        yAxis: {
+          type: 'category',
+          axisLabel: {
+            interval: 0,
+            rotate: 35
+          },
+          data: ['Brazil', 'Indonesia', 'USA', 'India', 'China', 'World']
+        },
+        series: [
+          {
+            name: '2011',
+            type: 'bar',
+            data: [18203, 23489, 29034, 104970, 131744, 100230]
+          },
+          {
+            name: '2012',
+            type: 'bar',
+            data: [19325, 23438, 31000, 121594, 134141, 101807]
+          }
+        ]
+      };
+      option && myChart4.setOption(option);
+    },
   },
 }
 </script>
 
 <style lang="less" scoped>
+
 .workTable {
+  width: 100%;
   .content1 {
-    height: 100vh;
+    height: calc(100vh - 60px);
     display: flex;
-    .content1Box1 {
-      height: 100%;
-      width: 66.6%;
-      padding: 10px 10px 0;
+    background-color: #011729;
+    color: #6aaaeb;
+    background: url(./img/a2.png);
+    background-size: cover;
+    .subjectBox {
+      border: 1px solid #6aaaeb;
+      border-radius: 10px;
+      padding: 10px;
+      margin: 10px 5px;
     }
-    .content1Box2 {
+    .leftBox {
+      width: 30%;
+      height: calc(100vh - 60px);
+      padding: 10px;
+    }
+    .centerBox {
+      width: 40%;
+      height: calc(100vh - 60px);
+      padding: 10px;
+      .contentTwoBox {
+        display:flex;
+        justify-content: space-between;
+        height:calc(33% - 20px)
+      }
+    }
+    .rightBox {
+      width: 30%;
+      height: calc(100vh - 60px);
+      padding: 10px;
+    }
+    #paymentsAnalysis,
+    #materialStatistics {
+      color: #6aaaeb;
+      height: calc(100% - 30px);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      .box {
+        height: 100%;
+        display: flex;
+        .title {
+          flex: 1;
+          height: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        .content {
+          flex: 3;
+          display: flex;
+          height: 100%;
+          .subBox {
+            flex: 1;
+            display: flex;
+            height: 100%;
+            flex-direction: column;
+            justify-content: space-evenly;
+            align-items: center;
+          }
+        }
+      }
+    }
+    #consumptionRank {
+      width: calc(100% - 20px);
+      height: calc(100% - 30px);
+    }
+    #consumableRecipients {
+      width: calc(100% - 20px);
+      height: calc(100% - 30px);
+    }
+    #useNumRankings {
+      width: calc(100% - 20px);
+      height: calc(100% - 30px);
+    }
+    #diseaseConsumption {
+      width: calc(100% - 20px);
+      height: calc(100% - 30px);
+    }
+    #inventoryAmount {
+      height: calc(100% - 30px);
+      font-size: 14px;
+      .top {
+        display: flex;
+        justify-content: space-between;
+        height: calc(100% - 50px);
+        .leftBox {
+          display: flex;
+          height: 100%;
+          flex-direction: column;
+          align-items: center;
+          justify-content: space-evenly;
+        }
+        .centerBox {
+          display: flex;
+          height: 100%;
+          width: 100px;
+          border: 3px solid #0556e1;
+          border-radius: 50%;
+          flex-direction: column;
+          align-items: center;
+          justify-content: space-evenly;
+        }
+        .rightBox {
+          display: flex;
+          height: 100%;
+          flex-direction: column;
+          align-items: center;
+          justify-content: space-evenly;
+        }
+      }
+      .bottom {
+          display: flex;
+          height: 50px;
+          align-items: center;
+          justify-content: space-evenly;
+      }
+    }
+    .paymentsAnalysis {
+      height: calc(33% - 20px)
+    }
+    .warehouseAnalysis {
+      height: 33%
+    }
+    .suppliersRank {
+      height: calc(33% - 20px)
+    }
+    .inventoryAmount {
+      height: calc(33% - 20px)
+    }
+    .consumableRecipients {
+      height: 33%
+    }
+    .materialStatistics {
+      height: calc(33% - 20px)
+    }
+    .useRankings {
+      width: calc(50% - 5px);
+      height: 100%
+    }
+    .consumptionRank {
+      height: 33%;
+    }
+    .diseaseConsumption {
+      height: calc(33% - 20px);
+    }
+    .useNumRankings {
+      width: calc(50% - 5px);
       height: 100%;
-      width: 33.3%;
-      padding: 10px 10px 0;
-      border-left: 10px solid #dad9d9;
+        .el-table td.el-table__cell, .el-table th.el-table__cell.is-leaf {
+          text-align: left !important;
+        }
     }
   }
-  #dataEcharts {
-    width: 100%;
-    height: calc(100% - 350px);
-  }
-  #ranking {
-    width: 100%;
-    height: calc(100% - 50px);
-  }
-  #proportion {
-    width: 100%;
-    height: calc(100% - 50px);
-  }
-  .title {
-    text-align: left;
-    padding: 10px;
-    font-size: 18px;
+  .selectCycle {
+    display: flex;
+    div {
+      width: 35px;
+      height: 20px;
+      margin-top: 5px;
+      line-height: 20px;
+      text-align: center;
+      border: 1px solid;
+    }
   }
 }
 
@@ -531,18 +805,38 @@ export default {
       height: auto;
       display: flex;
       flex-wrap: wrap;
-      .content1Box1 {
-        height: 100vh;
+      .leftBox {
         width: 100%;
-        padding: 10px 10px 0;
       }
-      .content1Box2 {
-        height: 100vh;
+      .centerBox {
         width: 100%;
-        padding: 10px 10px 0;
-        border-left: 0;
+        .contentTwoBox {
+          height: calc(40% -20px);
+        }
+      }
+      .rightBox {
+        width: 100%;
       }
     }
+  }
+}
+.el-table {
+  // 去除表格头部右边因为隐藏滚动条的空白
+  /deep/ .el-table__fixed-right-patch {
+    width: 0px !important;
+  }
+  /deep/ .el-table__body-wrapper::-webkit-scrollbar {
+      width: 0px; /*滚动条宽度*/
+      height: 0px; /*滚动条高度*/
+  }
+  /deep/ .el-table colgroup col[name='gutter']{
+      width: 11px;
+  }
+  /deep/ .el-table__body{
+      width: 100% !important;
+  }
+  /deep/ .gutter {
+    background-color: #011729 !important;
   }
 }
 </style>

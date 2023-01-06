@@ -1,6 +1,9 @@
 <template>
   <div class="titleBox">
-    <span class="titleIcon"></span> {{titleName}}
+    <div style="display: flex;align-items: center;">
+      <span class="titleIcon"></span> {{titleName}}
+    </div>
+    <slot></slot>
   </div>
 </template>
 
@@ -23,15 +26,18 @@ export default {
 
 <style lang="less" scoped>
 .titleBox {
-    line-height: 40px;
+    line-height: 30px;
+    color: #6aaaeb;
+    font-size: 14px;
     display: flex;
-    align-items: center;
-}
-.titleIcon {
-  display: inline-block;
-  margin-right: 10px;
-  height: 15px;
-  width: 4px;
-  background-color: #409eff;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    .titleIcon {
+      display: inline-block;
+      margin-right: 10px;
+      height: 15px;
+      width: 4px;
+      background-color: #409eff;
+    }
 }
 </style>

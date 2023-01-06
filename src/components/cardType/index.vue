@@ -8,26 +8,20 @@
     >
       <p class="titleBox">
         <span></span>
-        {{item.title1}}
+        {{item.title}}
       </p>
       <div class="contentBox">
         <div>
-          <p>待审核：<span
-              :class="item.title1 == '死因监测'? null : 'hover'"
-              @click="toAudit(item)"
-            >{{item.toAudit}}</span>人</p>
-          <p>已审核：<span
-              :class="item.title1 == '死因监测'? null : 'hover'"
-              @click="audited(item)"
-            >{{item.audited}}</span>人</p>
-          <p>超时提醒：<span
-              :class="item.title1 == '死因监测'? null : 'hover'"
-              @click="willExpire(item)"
-            >{{item.willExpire}}</span>人</p>
+            <p>{{item.num1}}</p>
+            <div class="contentBoxBot">
+              <div>
+                同期值：<span>{{item.num2}}</span>
+              </div>
+              <div>
+                增长率：<span>{{item.num3}}</span>
+              </div>
+            </div>
         </div>
-        <!-- <div>
-            <img src="../../assets/传染科.png" alt="">
-          </div> -->
       </div>
     </div>
   </div>
@@ -49,30 +43,6 @@ export default {
     }
   },
   methods: {
-    toAudit (item) {
-      if (item.title1 !== '死因监测') {
-        store.commit('setcurrenMenu', item.id)
-        store.commit('addtagList',item)
-        store.commit('setcurrenMenuTitle', item.title2)
-        this.$router.push(item.path)
-      }
-    },
-    audited (item) {
-      if (item.title1 !== '死因监测') {
-        store.commit('setcurrenMenu', item.id)
-        store.commit('addtagList',item)
-        store.commit('setcurrenMenuTitle', item.title2)
-        this.$router.push(item.path)
-      }
-    },
-    willExpire (item) {
-      if (item.title1 !== '死因监测') {
-        store.commit('setcurrenMenu', item.id)
-        store.commit('addtagList',item)
-        store.commit('setcurrenMenuTitle', item.title2)
-        this.$router.push(item.path)
-      }
-    },
   },
 }
 </script>
@@ -84,7 +54,8 @@ export default {
   color: #ffffff;
   border-bottom: 10px solid #dad9d9;
   .typeCard {
-    width: calc(16% - 14px);
+    // width: calc(19% - 14px);
+    flex: 1;
     min-height: 110px;
     padding: 0 10px;
     margin: 0 10px 10px;
@@ -102,21 +73,17 @@ export default {
       }
     }
     .contentBox {
-      display: flex;
-      margin-top: 5px;
-      justify-content: space-around;
       p {
+        font-size: 24px;
+        text-align: center;
+        line-height: 45px;
+      }
+      .contentBoxBot {
+        display: flex;
+        justify-content: space-between;
         font-size: 12px;
-        text-align: right;
         span {
-          cursor: pointer;
-          min-width: 40px;
-          display: inline-block;
-          text-align: center;
-          font-size: 18px;
-        }
-        .hover:hover {
-          color: #050505;
+          font-size: 16px;
         }
       }
     }
@@ -126,6 +93,7 @@ export default {
 @media screen and (max-width:1200px) {
   .typeCardList .typeCard {
     width: calc(100% - 60px);
+    flex: auto;
   }
 } 
 .color0 {

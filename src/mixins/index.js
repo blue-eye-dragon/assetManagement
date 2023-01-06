@@ -23,7 +23,11 @@ const mixin = {
     },
     //设置单元格背景
     cellStyle({row, column, rowIndex, columnIndex}) {
-        return 'height:35px!important; border-color:black!important; color:#000000!important; padding:0px!important; height:40px!important'
+        return 'height:30px!important; border-color:black!important; color:#6aaaeb!important; padding:0px!important; ; background-color:#011729'
+    },
+    //设置单元格背景
+    cellStyle1({row, column, rowIndex, columnIndex}) {
+        return 'height:30px!important; border-color:black!important; color:#6aaaeb!important; padding:0px!important; ; background-color:#001d42'
     },
   },
 }
